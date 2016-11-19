@@ -15,7 +15,7 @@ $(function(){
 					 var obj = $.parseJSON(data);	//делаем возвращенную сервером строку объектом и 
 													//обращаемся к нему ниже; 
 													//метод depricated, рекомендуется нативный
-					 $('#result').html(data +'<br>'+ obj.login);//вывод ответа в div
+					 $('#result').html(data);// +'<br>'+ obj.login);//вывод ответа в div
                 }
 				//if (obj.login == 'Alex'){
 				//location = 'test.html';//переход по ссылке на другую страницу,				                      
