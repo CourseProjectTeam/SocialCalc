@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="jquery.serializeObject.js"></script>
+    <script src="script.js"></script>	
+</head>
+<body>
+    <form id="my_form" name="my_form" method="post" action="handler.php">
+        <ul>
+            <li>
+                <h3>Регистрация</h3>
+            </li>
+            <li>
+                <label for="login">login:</label>
+                    <input type="text" id="login" name="login" placeholder="&#128100;&nbsp;username">
+            </li>
+            <li>
+                <label for="password">password:</label>
+                    <input type="text" id="password" name="password" placeholder="&#128274;&nbsp;password">
+            </li>
+            <li>
+                <input type="submit" id="submit" value="Войти">
+            </li>
+        </ul>
+    </form>
+	<h3>JSON</h3>
+	<div id="result">
+	</div>
+</body>
+</html>
