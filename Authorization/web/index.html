@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Общественный калькулятор онлайн</title>
+        <link rel="stylesheet" href="style/style.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/slider.js"></script>
+        <script src="js/login.js"></script>	
+        <script src="js/jquery.serializeObject.js"></script>
+    </head>
+    <body>
+        <div id="page">
+            <section>
+                <div id="header-fixed">
+                    <div class = "full-width">
+                        <h2><a href="#">&#9733;&nbsp;Social Calculator&nbsp;&#9733;</a></h2>
+                        <form id="head-form">
+                            <ul>
+                                <li>
+                                    <button type="button" class="button">Регистрация</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="button">Войти</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div><!--.full-width-->
+                </div><!--header-fixed-->
+            </section>
+            <div id="content-wrap">
+                <div id="content">
+                    <div id="left">
+                        <form name="sign-up" id="sign-up" method="post" action="http://localhost:8080/Authorization/SimpleServlet">
+                            <ul>
+                                <li>
+                                    <h3>Вход</h3>
+                                </li>
+                                <li>
+                                    <input type="text" id="login" name="login" title="login" placeholder="&#128100;&nbsp;username">
+                                </li>
+                                <li>
+                                    <input type="text" id="password" name="password" title="password" placeholder="&#128274;&nbsp;password">
+                                </li>
+                                <li>
+                                    <button type="submit" id="submit" class="button">Войти</button>
+                                </li>
+                                <li>
+                                    <p>Нет аккаунта?<br><a href="#">Зарегистрироваться</a></p>
+                                </li>
+                            </ul>                        
+                        </form>
+                        <div id="result"></div>
+                    </div><!--#left-->
+                    <div id="right">
+                        <h1>О проекте</h1>
+                        <div class="wiewport">
+                            <ul class="slidewrapper" data-current=0>
+                                <li><img src="img/slide1.jpg" width="500" height="276"></li>
+                                <li><img src="img/slide2.jpg" width="500" height="276"></li>
+                                <li><img src="img/slide3.jpg" width="500" height="276"></li>
+                            </ul>
+                            <a href="javascript: void(0)" id="prev_slide"><img src="img/prev.png" width="19" height="37"></a>
+                            <a href="javascript: void(0)" id="next_slide"><img src="img/next.png" width="19" height="37"></a>
+                        </div><!--#wiewport-->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div><!--#right-->
+                </div><!--#content-->
+            </div><!--#content-wrap-->
+
+            <div id="footer">
+                <p class="txt"><a href="#">Общественный калькулятор онлайн&nbsp;&copy;2016-2017</a></p>
+            </div><!--#footer-->
+        </div><!--#page-->
+    </body>
+</html>
