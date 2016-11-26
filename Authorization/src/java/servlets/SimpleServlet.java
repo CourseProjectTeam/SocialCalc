@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.*;
 
 @WebServlet(name = "SimpleServlet", urlPatterns = {"/SimpleServlet"})
 public class SimpleServlet extends HttpServlet {
@@ -27,52 +28,54 @@ public class SimpleServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         String sessionId = request.getSession().getId();
         response.addHeader("session", sessionId);
-        //инициализация выходного потока данных
-        PrintWriter out = response.getWriter();
         // получение логина и пароля из формы
         String login = (String) request.getParameter("login");
         String pass = (String) request.getParameter("password");
         //параметры доступа к БД
         String url = "jdbc:mysql://localhost:3306/sitedb", user = "root", password = "javaforever";
-        try { 
-            //регистрация драйвера 
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
-        } catch (SQLException e) {
-            out.println("Exception while register driver: " + e);
-        } catch (ClassNotFoundException e) {
-            out.println("Driver not found: " + e);
-        } catch (InstantiationException | IllegalAccessException e) {
-            out.println("Exception: " + e);
-        }
-
-        //TODO: переделать в блок try-with-resources
-        try {
-            // соединение и запрос к БД
-            conn = DriverManager.getConnection(url, user, password);
-            st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT login, pass FROM user WHERE login = \""+login+"\";");
-            rs.first();
-            //получение реальных имени и пароля из базы, если такой логин существует
-            //если нет, SQLException
-            actLogin = rs.getString("login");
-            actPassword = rs.getString("pass");
-            //закрытие соединения с БД
-            st.close();
-            conn.close();
-            //если пароль также верный, отправляем OK
-            if (pass.equals(actPassword)) {
-                out.println("OK: user loged in");
-            } else {
-                out.println("BAD: incorrect password");
+        JSONObject json = new JSONObject();
+        try (PrintWriter out = response.getWriter()) {
+            try {
+                //регистрация драйвера 
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+            } catch (SQLException e) {
+                json.put("exception", e.getClass()+": Exception while register jdbc driver");
+            } catch (ClassNotFoundException e) {
+                json.put("exception", e.getClass()+": Driver not found");
+            } catch (InstantiationException | IllegalAccessException e) {
+                json.put("exception", e.toString());
             }
-        } catch (SQLException e) {
-            out.println("SQLException occured: database doesn't contain this user: " + e.getMessage());
-        } catch (Exception e) {
-            out.println("Exception: " + e.getMessage());
-        } finally {
-            //закрываем PrintWriter
-            out.close();
+            try {
+                // соединение и запрос к БД
+                conn = DriverManager.getConnection(url, user, password);
+                st = conn.createStatement();
+                ResultSet rs = st.executeQuery("SELECT login, pass FROM user WHERE login = \"" + login + "\";");
+                rs.first();
+                //получение реальных имени и пароля из базы, если такой логин существует
+                //если нет, SQLException
+                actLogin = rs.getString("login");
+                actPassword = rs.getString("pass");
+                //закрытие соединения с БД
+                st.close();
+                conn.close();
+            } catch (SQLException e) {
+                json.put("exception", "SQLException: no such user");
+                json.put("accepted", false);
+            } catch (Exception e) {
+                json.put("exception", e.toString());
+                json.put("accepted", false);
+            } finally {
+                if (login.equals(actLogin) && pass.equals(actPassword)) {
+                    json.put("accepted", true);
+                } else {
+                    json.put("accepted", false);
+                }
+                // отсылаем данные
+                out.print(json);
+            }
+        } catch (JSONException e) {
+
         }
     }
 
