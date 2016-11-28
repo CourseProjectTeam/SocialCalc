@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Общественный калькулятор онлайн</title>
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+    <!-- Init jQuery and jQuery UI -->
+    <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui-1.8.20.custom.min.js"></script>
+    <link href="js/jquery/ui-lightness/jquery-ui-1.8.20.custom.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- Init jqDynaForm -->
+    <link href="js/jqDynaForm/jqDynaForm.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jqDynaForm/jqDynaForm.js"></script>
+    <script type="text/javascript" src="js/showFormJson.js"></script>
+</head>
+<body>
+<div id="page">
+    <section>
+        <div id="header-fixed">
+            <div class="full-width">
+                <h2><a href="#">&#9733;&nbsp;Social Calculator&nbsp;&#9733;</a></h2>
+                <form id="head-form">
+                    <ul>
+                        <li>
+                            <button type="button" class="button">Регистрация</button>
+                        </li>
+                        <li>
+                            <button type="button" class="button">Войти</button>
+                        </li>
+                    </ul>
+                </form>
+            </div><!--.full-width-->
+        </div><!--header-fixed-->
+    </section>
+    <div id="content-wrap">
+        <div id="content">
+            <div id="smallForm">
+                <h2>Счет на оплату</h2>
+                <h3>Покупатели</h3>
+                <div data-holder-for="users"></div>
+                <h3>Покупки</h3>
+                <div data-holder-for="item"></div>
+                <input type="button" value="JSON representation" id="saveSmallForm">
+            </div>
+            <!-- Subforms library -->
+            <div style="display:none">
+                <div data-name="users" data-label="Users" class="users">
+                    Пользователь: <input type="text" title="user" name="user_name" style="width:150px">
+                </div>
+            </div>
+            <!-- Subforms library -->
+            <div style="display:none">
+                <div data-name="item" data-label="Item" class="products">
+                    Продукт: <input type="text" title="item" name="item" style="width:300px">
+                    Цена: <input type="text" title="price" name="price" style="width:80px; text-align:right">
+                    Плательщик: <input type="text" title="payer" name="payer" style="width:150px">
+                </div>
+            </div>
+            <div id="popup"></div>
+
+        </div><!--#content-->
+    </div><!--#content-wrap-->
+
+    <div id="footer">
+        <p class="txt"><a href="#">Общественный калькулятор онлайн&nbsp;&copy;2016-2017</a></p>
+    </div><!--#footer-->
+</div><!--#page-->
+
+
+</body>
+</html>

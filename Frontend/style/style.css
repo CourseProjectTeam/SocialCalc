@@ -55,11 +55,11 @@ section {
     right: 100%;
 }
 
-.full-width:after {
+:after {
     left: 100%;
 }
 
-h2 {
+.full-width h2 {
     float: left;
     padding: 20px 0;
     margin-left: 90px;
@@ -279,3 +279,45 @@ h1 {
     color: #666;
     font-size: 16px;
 }
+
+#smallForm {
+    padding: 3px;
+    border: 1px solid #6666cc;
+    background-color: #ebebeb;
+    width: 800px;
+    border-radius: 3px;
+    margin: 50px auto;
+}
+
+#smallForm h2, #smallForm h3 {
+    text-align: center;
+    color: #6666cc;
+    margin: 20px 0;
+}
+
+#smallForm input[type='text'] {
+    width: 150px;
+    font-size: 18px;
+    padding: 3px;
+    margin: 8px 0;
+    border: #ccc 1px solid;
+}
+
+#smallForm input[type='button'] {
+    padding: 3px;
+    margin: 20px 0 20px 20px;
+    color: #6666cc;
+}
+
+.users, .products {
+    color: #6666cc;
+}
+
+.users {
+    padding-left: 20px;
+}
+
+.products {
+    text-align: center;
+}
+
