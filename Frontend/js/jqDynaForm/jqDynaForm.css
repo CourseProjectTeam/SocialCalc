@@ -1,0 +1,13 @@
+.jqDynaForm .add {width:29px; height:30px; /*margin-left:5px;*/ background-image:url(add1.png); cursor:pointer; margin-left: -17px;}
+.jqDynaForm .delete {width:10px; height:10px; background-image:url(delete.png); margin-top:5px; margin-left:-5px; border-radius:2px; float:left; cursor:pointer; position:absolute; display:none; z-index:10}
+.jqDynaForm .hover .delete {display:block !important}
+
+.jqDynaForm .header {}
+.jqDynaForm .list {min-height:10px}
+.jqDynaForm .list .item {cursor:move}
+.jqDynaForm .footer {height:15px; border-bottom:1px solid #6666cc; margin-top: 10px;/*height:5px;*/}
+
+.jqDynaForm .deleting {border:1px solid red}
+.jqDynaForm .moving {border:1px solid #6666cc;}
+
+
